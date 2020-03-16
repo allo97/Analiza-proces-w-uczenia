@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584369015458.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2994392427",
+    "id" : "DBD11439",
+    "lastKnownWriteTime" : 1584391269,
+    "last_content_update" : 1584391269371,
+    "path" : "~/Ważne foldery/STUDIA/ATH/1 semestr/APU/lab2/AHP_method_lab2/script1.R",
+    "project_path" : "script1.R",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

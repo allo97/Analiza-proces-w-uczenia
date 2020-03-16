@@ -1,0 +1,165 @@
+Version: 2.0
+
+#########################
+# Alternatives Section
+#
+
+Alternatives: &alternatives
+# Here, we list all the alternatives, together with their attributes. 
+# We can use these attributes later in the file when defining 
+# preferenceFunctions. The attributes can be quantitative or 
+# qualitative.
+# Alternatives are 10 smartphones with their parameters as attributes.
+  Samsung Galaxy S20:
+    price: 3949
+    display: 6.7
+    RAM: 8
+    storage: 128
+    camera: 64
+  Samsung Galaxy A71:
+    price: 1999
+    display: 6.7
+    RAM: 6
+    storage: 128
+    camera: 64
+  Samsung Galaxy A40:
+    price: 999
+    display: 5.9
+    RAM: 4
+    storage: 64
+    camera: 16
+  Samsung Galaxy A30s:
+    price: 849
+    display: 6.4
+    RAM: 4
+    storage: 64
+    camera: 25
+  Samsung Galaxy A70:
+    price: 1499
+    display: 6.7
+    RAM: 6
+    storage: 128
+    camera: 32
+  Samsung Galaxy A51:
+    price: 1699
+    display: 6.5
+    RAM: 4
+    storage: 128
+    camera: 48
+  Samsung Galaxy S10:
+    price: 3299
+    display: 6.1
+    RAM: 8
+    storage: 128
+    camera: 16
+  Samsung Galaxy A10:
+    price: 699
+    display: 6.2
+    RAM: 2
+    storage: 32
+    camera: 13
+  Samsung Galaxy S10 Lite:
+    price: 2799
+    display: 6.7
+    RAM: 8
+    storage: 128
+    camera: 48
+  Samsung Galaxy Note10 Lite:
+    price: 2649
+    display: 6.7
+    RAM: 6
+    storage: 128
+    camera: 12
+
+#
+# End of Alternatives Section
+#####################################
+
+#####################################
+# Goal Section
+#
+
+
+Goal:
+# The goal spans a tree of criteria and the alternatives
+  name: Buy Smartphone with Android
+  description: >
+    We want to buy a new android smartphone with 8 core processor for our client.
+  author: unknown
+  preferences:
+    # preferences are typically defined pairwise
+    # 1 means: A is equal to B
+    # 9 means: A is highly preferrable to B
+    # 1/9 means: B is highly preferrable to A
+    # We have four preferences:
+    # -> Performance
+    # -> Quality
+    # -> Style
+    # -> Price
+    pairwise:
+      - [Price, Quality, 3]
+      - [Price, Style, 7]
+      - [Price, Performance, 3]
+      - [Quality, Style, 3]
+      - [Quality, Performance, 1]
+      - [Style, Performance, 1/7]
+  children: 
+    # normal ratio of price
+    Price:
+      preferences:
+        pairwiseFunction:
+          function(a1, a2) min(9, max(1/9, 1/(a1$price/a2$price)))
+      children: *alternatives
+    # Combination of Ram and Storage
+    Performance:
+      preferences:
+        pairwise:
+          - [Speed of Smartphone, Amount of storage, 5]
+      children:
+        Speed of Smartphone:
+          preferences:
+            pairwiseFunction:
+              function(a1, a2) min(9, max(1/9, a1$RAM/a2$RAM))
+          children: *alternatives
+        Amount of storage:
+          preferences:
+            pairwiseFunction:
+              function(a1, a2) min(9, max(1/9, a1$storage/a2$storage))
+          children: *alternatives
+    # Combination of display size (lower is better) and camera quality (is important)
+    Style: 
+      preferences:
+        pairwise:
+          - [Size, Quality of Camera, 1/4]
+      children:
+        Size:
+          preferences:
+            pairwiseFunction:
+              function(a1, a2) min(9, max(1/9, 1/(a1$display/a2$display)))
+          children: *alternatives
+        Quality of Camera:
+          preferences:
+            pairwiseFunction:
+              function(a1, a2) min(9, max(1/9, 2 * (a1$camera/a2$camera)))
+          children: *alternatives
+    # Set Score for Quality based on price
+    Quality:
+      preferences:
+        scoreFunction: >
+          function(alternative) {
+            if(alternative$price < 500) return (1)
+            if(alternative$price < 1000) return (2)
+            if(alternative$price < 1500) return (3)
+            if(alternative$price < 2000) return (4)
+            if(alternative$price < 2500) return (5)
+            if(alternative$price < 3000) return (6)
+            if(alternative$price < 3500) return (7)
+            if(alternative$price < 4000) return (8)
+            return (8)
+          }
+      children: *alternatives
+
+
+#
+# End of Goal Section
+#####################################
