@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585751298049.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A0BED12D",
+    "lastKnownWriteTime" : 7287422520962202146,
+    "last_content_update" : 1585751298049,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "9A0C3917",
+        "caption" : "trainingdata",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=trainingdata&cache_key=9A0C3917",
+        "displayedObservations" : 10,
+        "environment" : "",
+        "expression" : "trainingdata",
+        "object" : "trainingdata",
+        "preview" : 0,
+        "totalObservations" : 10,
+        "variables" : 3
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

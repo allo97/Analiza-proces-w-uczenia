@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585752233005.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DBF4FA72",
+    "lastKnownWriteTime" : 32370017462124598,
+    "last_content_update" : 1585752233005,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "49b02a4280ab400a89f335c5a846e571",
+        "name" : "net.price",
+        "title" : "net.price"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585751118015.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "EE518880",
+    "lastKnownWriteTime" : 27866417834754102,
+    "last_content_update" : 1585751118015,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "69F4286D",
+        "caption" : "scaled.traininginput",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=scaled.traininginput&cache_key=69F4286D",
+        "displayedObservations" : 10,
+        "environment" : "",
+        "expression" : "scaled.traininginput",
+        "object" : "scaled.traininginput",
+        "preview" : 0,
+        "totalObservations" : 10,
+        "variables" : 2
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
