@@ -1,5 +1,5 @@
 # 1 wariant
-
+library("plotrix")
 # a
 a <- 2 * exp(5)
 b <- 2 * a
@@ -19,7 +19,7 @@ apropos("sum", mode = "function")
 
 # e
 getwd()
-setwd("C:/Users/aslod/Documents/Wa¿ne foldery/STUDIA/ATH/1 semestr/APU/first")
+setwd("C:/Users/aslod/Documents/Wa?ne foldery/STUDIA/ATH/1 semestr/APU/lab1")
 a <- "Smartfony Samsung"
 save(a, file = "smartfony.RData")
 remove(a)
@@ -75,18 +75,18 @@ for (i in 1:4) {
 
 count <- table(smartphone$ocena_klientow)
 
-barplot(count, main = "Liczebnoœæ oceny klientów", xlab = "Ocena", ylab = "Iloœæ") 
+barplot(count, main = "Liczebnosc oceny klientow", xlab = "Ocena", ylab = "Ilo??") 
 
 # m
 percentage <- table(smartphone$ocena_klientow) / length(smartphone$ocena_klientow)
 pie(percentage)
-fan.plot(percentage, labels = names(percentage), main = "Wykres wachlarzowy procentowego udzia³u oceny klientów")
+fan.plot(percentage, labels = names(percentage), main = "Wykres wachlarzowy procentowego udzialu oceny klientow")
 
 # n
 status_opinii <- c("1 opinia", "wiecej niz 1 opinia", "wiecej niz 1 opinia", 
-                   "wiecej niz 1 opinia", "5 opinii", "wiecej niz 5 opinii ale mniej ni¿ 10 opinii",
-                   "wiecej niz 5 opinii ale mniej ni¿ 10 opinii","wiecej niz 5 opinii ale mniej ni¿ 10 opinii",
-                   "wiecej niz 5 opinii ale mniej ni¿ 10 opinii", "conajmniej 10 opinii",
+                   "wiecej niz 1 opinia", "5 opinii", "wiecej niz 5 opinii ale mniej ni? 10 opinii",
+                   "wiecej niz 5 opinii ale mniej ni? 10 opinii","wiecej niz 5 opinii ale mniej ni? 10 opinii",
+                   "wiecej niz 5 opinii ale mniej ni? 10 opinii", "conajmniej 10 opinii",
                    "5 opinii", "5 opinii","5 opinii","5 opinii","5 opinii")
 
 smartphone <- cbind(smartphone, status_opinii)
@@ -96,7 +96,7 @@ pie(smartphone_percentage)
 
 # o
 for(row in 1:nrow(smartphone)) {
-  print(paste(smartphone[row, "nazwa"], "ma ocenê klientów", smartphone[row, "ocena_klientow"], "bo ma liczbê opinii", smartphone[row, "liczba_opinii"] ))
+  print(paste(smartphone[row, "nazwa"], "ma ocene klientow", smartphone[row, "ocena_klientow"], "bo ma liczbe opinii", smartphone[row, "liczba_opinii"] ))
 }
 
 # p

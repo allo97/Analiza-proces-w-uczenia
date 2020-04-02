@@ -1,0 +1,165 @@
+> # 1 wariant
+> library("plotrix")
+> # a
+> a <- 2 * exp(5)
+> b <- 2 * a
+> a < b
+[1] TRUE
+> a > b
+[1] FALSE
+> 
+> # b
+> sum()
+[1] 0
+> help(sum)
+> 
+> # c
+> vec <- 15:25
+> sum(vec)
+[1] 220
+> 
+> # d
+> apropos("sum", mode = "function")
+ [1] ".colSums"                ".rowSums"                ".rs.callSummary"        
+ [4] ".rs.summarizeDir"        ".tryResumeInterrupt"     "colSums"                
+ [7] "contr.sum"               "cumsum"                  "format.summaryDefault"  
+[10] "print.summary.table"     "print.summary.warnings"  "print.summaryDefault"   
+[13] "rowsum"                  "rowsum.data.frame"       "rowsum.default"         
+[16] "rowSums"                 "sum"                     "sumbrk"                 
+[19] "sumDendrite"             "summary"                 "Summary"                
+[22] "summary.aov"             "summary.connection"      "summary.data.frame"     
+[25] "Summary.data.frame"      "summary.Date"            "Summary.Date"           
+[28] "summary.default"         "Summary.difftime"        "summary.factor"         
+[31] "Summary.factor"          "summary.glm"             "summary.lm"             
+[34] "summary.manova"          "summary.matrix"          "Summary.numeric_version"
+[37] "Summary.ordered"         "summary.POSIXct"         "Summary.POSIXct"        
+[40] "summary.POSIXlt"         "Summary.POSIXlt"         "summary.proc_time"      
+[43] "summary.srcfile"         "summary.srcref"          "summary.stepfun"        
+[46] "summary.table"           "summary.warnings"        "summaryRprof"           
+> 
+> # e
+> getwd()
+[1] "C:/Users/aslod/Documents/Ważne foldery/STUDIA/ATH/1 semestr/APU/lab3/zad2/zadanie2"
+> setwd("C:/Users/aslod/Documents/Wa?ne foldery/STUDIA/ATH/1 semestr/APU/lab1")
+Błąd w poleceniu 'setwd("C:/Users/aslod/Documents/Wa?ne foldery/STUDIA/ATH/1 semestr/APU/lab1")':
+  nie można zmienić katalogu roboczego
+> a <- "Smartfony Samsung"
+> save(a, file = "smartfony.RData")
+> remove(a)
+> a
+BŁĄD: nie znaleziono obiektu 'a'
+> ls()
+ [1] "aparat_foto"           "b"                     "cena"                  "count"                
+ [5] "count_status_opinii"   "d"                     "f"                     "i"                    
+ [9] "liczba_opinii"         "maxs"                  "mean_by_group"         "mean_price"           
+[13] "mins"                  "nazwa"                 "new_smartphone"        "next_smartphone"      
+[17] "ocena_klientow"        "pamiec_RAM"            "pamiec_wbudowana"      "percentage"           
+[21] "row"                   "scaled.testdata"       "scaled.traininginput"  "smartphone"           
+[25] "smartphone_percentage" "smartphones.price"     "smartphones.results"   "status_opinii"        
+[29] "testdata"              "trainingdata"          "traininginput"         "vec"                  
+[33] "vec100"                "wyswietlacz"          
+> load("smartfony.RData")
+> a
+[1] "Smartfony Samsung"
+> 
+> # f
+> head(mtcars,10)
+                   mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360        14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D         24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230          22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280          19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+> 
+> # g
+> vec100 <- rev(seq(20,100,4))
+> 
+> # h
+> a <- c((9:5))
+> b <- c((11:16))
+> d <- c(b,a)
+> d
+ [1] 11 12 13 14 15 16  9  8  7  6  5
+> 
+> # i
+> nazwa <- c("tel1","tel2","tel3","tel4","tel5","tel6","tel7","tel8","tel9","tel10")
+> wyswietlacz <-c(5,6,5,5,4,3,2,4,5,6)
+> pamiec_RAM <-c(8,7,4,2,3,4,5,6,7,12)
+> pamiec_wbudowana <-c(8,16,32,64,128,256,512,1,2,3)
+> aparat_foto <-c(13,12,11,10,15,18,20,108,5,13)
+> cena <-c(500, 600, 700, 800,900, 1000, 1100,1200,1300,1400)
+> liczba_opinii <-c(1,2,3,4,5,6,8,7,9,10)
+> 
+> smartphone <- data.frame(nazwa, wyswietlacz, pamiec_RAM, pamiec_wbudowana, aparat_foto, cena, liczba_opinii)
+> 
+> mean_price <- mean(smartphone$cena)
+> 
+> # j
+> new_smartphone <- data.frame(nazwa="tel11", wyswietlacz=5, pamiec_RAM=8, pamiec_wbudowana=16, aparat_foto=20, cena=9075, liczba_opinii=5, stringsAsFactors = FALSE)
+> 
+> smartphone <- rbind(smartphone, new_smartphone)
+> 
+> mean_price <- mean(smartphone$cena)
+> 
+> # k
+> ocena_klientow <- seq(0,5,0.5)
+> 
+> smartphone <- cbind(smartphone, ocena_klientow)
+> 
+> mean_by_group <- aggregate(smartphone[, 6], list(smartphone$ocena_klientow), mean)
+> 
+> # l
+> new_smartphone <- data.frame(nazwa="tel11", wyswietlacz=5, pamiec_RAM=8, pamiec_wbudowana=16, aparat_foto=20, cena=9075, liczba_opinii=5, ocena_klientow=3.5, stringsAsFactors = FALSE)
+> for (i in 1:4) {
++   smartphone <- rbind(smartphone, new_smartphone)
++ }
+> 
+> count <- table(smartphone$ocena_klientow)
+> 
+> barplot(count, main = "Liczebnosc oceny klientow", xlab = "Ocena", ylab = "Ilo??") 
+> 
+> # m
+> percentage <- table(smartphone$ocena_klientow) / length(smartphone$ocena_klientow)
+> pie(percentage)
+> fan.plot(percentage, labels = names(percentage), main = "Wykres wachlarzowy procentowego udzialu oceny klientow")
+> 
+> # n
+> status_opinii <- c("1 opinia", "wiecej niz 1 opinia", "wiecej niz 1 opinia", 
++                    "wiecej niz 1 opinia", "5 opinii", "wiecej niz 5 opinii ale mniej ni? 10 opinii",
++                    "wiecej niz 5 opinii ale mniej ni? 10 opinii","wiecej niz 5 opinii ale mniej ni? 10 opinii",
++                    "wiecej niz 5 opinii ale mniej ni? 10 opinii", "conajmniej 10 opinii",
++                    "5 opinii", "5 opinii","5 opinii","5 opinii","5 opinii")
+> 
+> smartphone <- cbind(smartphone, status_opinii)
+> count_status_opinii <- table(smartphone$status_opinii)
+> smartphone_percentage <- count_status_opinii / length(smartphone$status_opinii)
+> pie(smartphone_percentage)
+> 
+> # o
+> for(row in 1:nrow(smartphone)) {
++   print(paste(smartphone[row, "nazwa"], "ma ocene klientow", smartphone[row, "ocena_klientow"], "bo ma liczbe opinii", smartphone[row, "liczba_opinii"] ))
++ }
+[1] "tel1 ma ocene klientow 0 bo ma liczbe opinii 1"
+[1] "tel2 ma ocene klientow 0.5 bo ma liczbe opinii 2"
+[1] "tel3 ma ocene klientow 1 bo ma liczbe opinii 3"
+[1] "tel4 ma ocene klientow 1.5 bo ma liczbe opinii 4"
+[1] "tel5 ma ocene klientow 2 bo ma liczbe opinii 5"
+[1] "tel6 ma ocene klientow 2.5 bo ma liczbe opinii 6"
+[1] "tel7 ma ocene klientow 3 bo ma liczbe opinii 8"
+[1] "tel8 ma ocene klientow 3.5 bo ma liczbe opinii 7"
+[1] "tel9 ma ocene klientow 4 bo ma liczbe opinii 9"
+[1] "tel10 ma ocene klientow 4.5 bo ma liczbe opinii 10"
+[1] "tel11 ma ocene klientow 5 bo ma liczbe opinii 5"
+[1] "tel11 ma ocene klientow 3.5 bo ma liczbe opinii 5"
+[1] "tel11 ma ocene klientow 3.5 bo ma liczbe opinii 5"
+[1] "tel11 ma ocene klientow 3.5 bo ma liczbe opinii 5"
+[1] "tel11 ma ocene klientow 3.5 bo ma liczbe opinii 5"
+> 
+> # p
+> write.csv(smartphone, "smartphone.csv", row.names = TRUE)
+> next_smartphone <- read.csv2("smartphone.csv", header = TRUE, sep=",")
