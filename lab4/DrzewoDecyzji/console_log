@@ -1,0 +1,136 @@
+> # Prognozowanie oceny klientów w skali 5-punktowej na podstawie parametrów
+> 
+> # load the package  
+> library('C50')
+> 
+> 
+> 
+> 
+> # Data of 11 Samsung Smartphones
+> 
+> nazwa <- c("Samsung Galaxy S20","Samsung Galaxy A71","Samsung Galaxy A40","Samsung Galaxy A30s","Samsung Galaxy A70",
++           "Samsung Galaxy A51","Samsung Galaxy S10","Samsung Galaxy A10","Samsung Galaxy S10 Lite",
++           "Samsung Galaxy Note10 Lite","Samsung Galaxy A20e")
+> wyswietlacz <-c(6.7,6.7,5.9,6.4,6.7,6.5,6.1,6.2,6.7,6.7, 5.8)
+> pamiec_RAM <-c(8,6,4,4,6,4,8,2,8,6, 3)
+> pamiec_wbudowana <-c(128,128,64,64,128,128,128,32,128, 128, 32)
+> aparat_foto <-c(64,64,16,25,32,48,16,13,48,12, 13)
+> cena <-c(3949, 1999, 999, 849,1499, 1699, 3299,699,2799,2649, 749)
+> liczba_opinii <-c(7,38,20,21,65,20,77,22,10,8, 42)
+> opinia_klientow <- c(4.8, 4.6, 4.7, 4.7, 4.7, 4.8, 4.8, 4.7, 4.9, 4.8, 4.7)
+> 
+> # Uwzględnia wyswietlacz, RAM, pamiec wbudowana, aparat i opinie
+> 
+> smartphones <- data.frame(wyswietlacz, pamiec_RAM, pamiec_wbudowana, aparat_foto, opinia_klientow)
+> 
+> head(smartphones)
+  wyswietlacz pamiec_RAM pamiec_wbudowana aparat_foto opinia_klientow
+1         6.7          8              128          64             4.8
+2         6.7          6              128          64             4.6
+3         5.9          4               64          16             4.7
+4         6.4          4               64          25             4.7
+5         6.7          6              128          32             4.7
+6         6.5          4              128          48             4.8
+> 
+> 
+> # Trenujemy drzewo
+> smartphones_tree <- C5.0(smartphones[,-5], as.factor(smartphones[,5]))
+> 
+> # Zobacz podsumowanie drzewa 
+> summary(smartphones_tree) 
+
+Call:
+C5.0.default(x = smartphones[, -5], y = as.factor(smartphones[, 5]))
+
+
+C5.0 [Release 2.07 GPL Edition]  	Tue Apr 21 12:44:20 2020
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 11 cases (5 attributes) from undefined.data
+
+Decision tree:
+
+pamiec_wbudowana <= 64: 4.7 (4)
+pamiec_wbudowana > 64: 4.8 (7/3)
+
+
+Evaluation on training data (11 cases):
+
+	    Decision Tree   
+	  ----------------  
+	  Size      Errors  
+
+	     2    3(27.3%)   <<
+
+
+	   (a)   (b)   (c)   (d)    <-classified as
+	  ----  ----  ----  ----
+	                 1          (a): class 4.6
+	           4     1          (b): class 4.7
+	                 4          (c): class 4.8
+	                 1          (d): class 4.9
+
+
+	Attribute usage:
+
+	100.00%	pamiec_wbudowana
+
+
+Time: 0.0 secs
+
+> 
+> # rysuj wykres drzewa  
+> plot(smartphones_tree, main = 'Drzewo wyboru smartfonów') 
+> 
+> smartphones_tree_rules <- C5.0(smartphones[,-5], as.factor(smartphones[,5]), rules = TRUE) 
+> summary(smartphones_tree_rules) # view the ruleset  
+
+Call:
+C5.0.default(x = smartphones[, -5], y = as.factor(smartphones[, 5]), rules = TRUE)
+
+
+C5.0 [Release 2.07 GPL Edition]  	Tue Apr 21 12:44:20 2020
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 11 cases (5 attributes) from undefined.data
+
+Rules:
+
+Rule 1: (4, lift 1.8)
+	pamiec_wbudowana <= 64
+	->  class 4.7  [0.833]
+
+Rule 2: (7/3, lift 1.5)
+	pamiec_wbudowana > 64
+	->  class 4.8  [0.556]
+
+Default class: 4.7
+
+
+Evaluation on training data (11 cases):
+
+	        Rules     
+	  ----------------
+	    No      Errors
+
+	     2    3(27.3%)   <<
+
+
+	   (a)   (b)   (c)   (d)    <-classified as
+	  ----  ----  ----  ----
+	                 1          (a): class 4.6
+	           4     1          (b): class 4.7
+	                 4          (c): class 4.8
+	                 1          (d): class 4.9
+
+
+	Attribute usage:
+
+	100.00%	pamiec_wbudowana
+
+
+Time: 0.0 secs

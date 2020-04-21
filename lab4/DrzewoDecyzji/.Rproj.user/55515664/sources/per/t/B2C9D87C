@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587466224688.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4073537719",
+    "id" : "B2C9D87C",
+    "lastKnownWriteTime" : 1587465843,
+    "last_content_update" : 1587465843,
+    "path" : "~/Ważne foldery/STUDIA/ATH/1 semestr/APU/lab4/DrzewoDecyzji/decyzja_smartfonow.R",
+    "project_path" : "decyzja_smartfonow.R",
+    "properties" : {
+        "cursorPosition" : "15,50",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587460556170.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1634586553",
+    "id" : "35B2D853",
+    "lastKnownWriteTime" : 1587461581,
+    "last_content_update" : 1587461581583,
+    "path" : "~/Ważne foldery/STUDIA/ATH/1 semestr/APU/lab4/DrzewoDecyzji/titanic_example.R",
+    "project_path" : "titanic_example.R",
+    "properties" : {
+        "cursorPosition" : "6,44",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587457457501.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "793029843",
+    "id" : "920C6B84",
+    "lastKnownWriteTime" : 1587460183,
+    "last_content_update" : 1587460183677,
+    "path" : "~/Ważne foldery/STUDIA/ATH/1 semestr/APU/lab3/zad2/exampleProject.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "9,13",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
