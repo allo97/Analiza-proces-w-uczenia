@@ -1,0 +1,66 @@
+> # Reguły klasyfikacyjne C5.0 Iris
+> library(C50)
+> data(iris)
+> mod1 <- C5.0(Species ~ ., data = iris, rules = TRUE)
+> library(C50)
+> plot(mod1)
+BŁĄD: tree models only
+> summary(mod1)
+
+Call:
+C5.0.formula(formula = Species ~ ., data = iris, rules = TRUE)
+
+
+C5.0 [Release 2.07 GPL Edition]  	Fri May 08 15:29:31 2020
+-------------------------------
+
+Class specified by attribute `outcome'
+
+Read 150 cases (5 attributes) from undefined.data
+
+Rules:
+
+Rule 1: (50, lift 2.9)
+	Petal.Length <= 1.9
+	->  class setosa  [0.981]
+
+Rule 2: (48/1, lift 2.9)
+	Petal.Length > 1.9
+	Petal.Length <= 4.9
+	Petal.Width <= 1.7
+	->  class versicolor  [0.960]
+
+Rule 3: (46/1, lift 2.9)
+	Petal.Width > 1.7
+	->  class virginica  [0.958]
+
+Rule 4: (46/2, lift 2.8)
+	Petal.Length > 4.9
+	->  class virginica  [0.938]
+
+Default class: setosa
+
+
+Evaluation on training data (150 cases):
+
+	        Rules     
+	  ----------------
+	    No      Errors
+
+	     4    4( 2.7%)   <<
+
+
+	   (a)   (b)   (c)    <-classified as
+	  ----  ----  ----
+	    50                (a): class setosa
+	          47     3    (b): class versicolor
+	           1    49    (c): class virginica
+
+
+	Attribute usage:
+
+	 96.00%	Petal.Length
+	 62.67%	Petal.Width
+
+
+Time: 0.0 secs

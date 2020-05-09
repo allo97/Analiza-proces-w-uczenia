@@ -1,0 +1,344 @@
+> # Ocena klientow, pakiet mlr
+> library(mlr)
+> 
+> # Data of 11 Samsung Smartphones
+> 
+> nazwa <- c("Samsung Galaxy S20","Samsung Galaxy A71","Samsung Galaxy A40","Samsung Galaxy A30s","Samsung Galaxy A70",
++            "Samsung Galaxy A51","Samsung Galaxy S10","Samsung Galaxy A10","Samsung Galaxy S10 Lite",
++            "Samsung Galaxy Note10 Lite","Samsung Galaxy A20e")
+> wyswietlacz <-c(6.7,6.7,5.9,6.4,6.7,6.5,6.1,6.2,6.7,6.7, 5.8)
+> pamiec_RAM <-c(8,6,4,4,6,4,8,2,8,6, 3)
+> pamiec_wbudowana <-c(128,128,64,64,128,128,128,32,128, 128, 32)
+> aparat_foto <-c(64,64,16,25,32,48,16,13,48,12, 13)
+> cena <-c(3949, 1999, 999, 849,1499, 1699, 3299,699,2799,2649, 749)
+> liczba_opinii <-c(7,38,20,21,65,20,77,22,10,8, 42)
+> ocena_klientow <- c(3, 1, 2, 2, 2, 3, 3, 2, 4, 3, 2)
+> 
+> # Uwzględnia wyswietlacz, RAM, pamiec wbudowana, aparat i opinie
+> 
+> smartphones <- data.frame(wyswietlacz, pamiec_RAM, pamiec_wbudowana, aparat_foto, ocena_klientow)
+> 
+> 
+> ## MAKE RESAMPLING STRATEGY
+> rdesc = makeResampleDesc(method = "CV", stratify = F)
+> 
+> #MAKE REGR TASK##############################################################################################################
+> 
+> smartphones$ocena_klientow <- as.numeric(smartphones$ocena_klientow)
+> regr.task = makeRegrTask(id = "Smartphones ocena klientow MSE",  data = smartphones, target = "ocena_klientow")
+> regr.task
+Supervised task: Smartphones ocena klientow MSE
+Type: regr
+Target: ocena_klientow
+Observations: 11
+Features:
+   numerics     factors     ordered functionals 
+          4           0           0           0 
+Missings: FALSE
+Has weights: FALSE
+Has blocking: FALSE
+Has coordinates: FALSE
+> 
+> #listLearners("regr")[c("class", "package")]
+> 
+> #Default values 
+> regr.learners = makeLearners(c("lm", "randomForest", "nnet", "ctree", "rpart"), type = "regr")
+> regr.comparison = benchmark(learners = regr.learners, tasks = regr.task, resamplings = rdesc)
+Task: Smartphones ocena klientow MSE, Learner: regr.lm
+Resampling: cross-validation
+Measures:             mse       
+[Resample] iter 1:    0.1427135 
+[Resample] iter 2:    0.0355561 
+[Resample] iter 3:    15.0107559
+[Resample] iter 4:    0.5317488 
+[Resample] iter 5:    0.2286832 
+[Resample] iter 6:    0.8288879 
+[Resample] iter 7:    4.2945737 
+[Resample] iter 8:    0.0302078 
+[Resample] iter 9:    0.0856962 
+[Resample] iter 10:   2.5773648 
+
+
+Aggregated Result: mse.test.mean=2.3766188
+
+
+Task: Smartphones ocena klientow MSE, Learner: regr.randomForest
+Resampling: cross-validation
+Measures:             mse       
+[Resample] iter 1:    0.0464642 
+[Resample] iter 2:    0.4646045 
+[Resample] iter 3:    0.3244659 
+[Resample] iter 4:    0.1222529 
+[Resample] iter 5:    0.1565710 
+[Resample] iter 6:    0.3878551 
+[Resample] iter 7:    3.8556689 
+[Resample] iter 8:    0.0683389 
+[Resample] iter 9:    0.0406483 
+[Resample] iter 10:   1.8983810 
+
+
+Aggregated Result: mse.test.mean=0.7365251
+
+
+Task: Smartphones ocena klientow MSE, Learner: regr.nnet
+Resampling: cross-validation
+Measures:             mse       
+# weights:  19
+initial  value 53.939141 
+final  value 6.499996 
+converged
+[Resample] iter 1:    0.2499926 
+# weights:  19
+initial  value 71.778365 
+iter  10 value 6.396881
+iter  20 value 6.271937
+iter  30 value 5.666448
+iter  40 value 4.620629
+iter  50 value 2.786336
+iter  60 value 2.750144
+iter  70 value 2.749905
+iter  80 value 2.464578
+iter  90 value 1.061276
+iter 100 value 0.850246
+final  value 0.850246 
+stopped after 100 iterations
+[Resample] iter 2:    0.3080914 
+# weights:  19
+initial  value 63.319400 
+final  value 6.399994 
+converged
+[Resample] iter 3:    0.3599974 
+# weights:  19
+initial  value 77.650124 
+iter  10 value 6.236181
+iter  20 value 4.843429
+iter  30 value 2.900970
+iter  40 value 2.750416
+iter  50 value 2.750003
+final  value 2.750000 
+converged
+[Resample] iter 4:    0.0000000 
+# weights:  19
+initial  value 84.053514 
+iter  10 value 6.388123
+iter  20 value 3.150341
+iter  30 value 2.036216
+iter  40 value 0.759819
+iter  50 value 0.750061
+iter  60 value 0.750029
+iter  70 value 0.750023
+iter  80 value 0.750018
+iter  90 value 0.750013
+final  value 0.750012 
+converged
+[Resample] iter 5:    1.0234928 
+# weights:  19
+initial  value 92.207783 
+final  value 6.499996 
+converged
+[Resample] iter 6:    0.2500003 
+# weights:  19
+initial  value 61.992498 
+iter  10 value 4.102829
+iter  20 value 1.628396
+iter  30 value 1.607941
+iter  40 value 1.585520
+iter  50 value 1.574071
+iter  60 value 1.570109
+iter  70 value 1.562306
+iter  80 value 1.555881
+iter  90 value 1.552804
+iter 100 value 1.534979
+final  value 1.534979 
+stopped after 100 iterations
+[Resample] iter 7:    2.2763467 
+# weights:  19
+initial  value 88.321594 
+iter  10 value 6.221703
+iter  20 value 5.755539
+iter  30 value 5.714349
+final  value 5.714286 
+converged
+[Resample] iter 8:    0.1836741 
+# weights:  19
+initial  value 43.290738 
+iter  10 value 6.499847
+iter  20 value 6.494284
+iter  30 value 3.761899
+iter  40 value 2.701811
+iter  50 value 2.669365
+iter  60 value 2.666563
+iter  70 value 2.666489
+final  value 2.666488 
+converged
+[Resample] iter 9:    1.0075794 
+# weights:  19
+initial  value 23.718287 
+final  value 4.099998 
+converged
+[Resample] iter 10:   2.8899986 
+
+
+Aggregated Result: mse.test.mean=0.8549173
+
+
+Task: Smartphones ocena klientow MSE, Learner: regr.ctree
+Resampling: cross-validation
+Measures:             mse       
+[Resample] iter 1:    0.2500000 
+[Resample] iter 2:    0.3600000 
+[Resample] iter 3:    0.3600000 
+[Resample] iter 4:    0.3600000 
+[Resample] iter 5:    0.3600000 
+[Resample] iter 6:    0.2500000 
+[Resample] iter 7:    2.5600000 
+[Resample] iter 8:    0.3086420 
+[Resample] iter 9:    0.2500000 
+[Resample] iter 10:   2.8900000 
+
+
+Aggregated Result: mse.test.mean=0.7948642
+
+
+Task: Smartphones ocena klientow MSE, Learner: regr.rpart
+Resampling: cross-validation
+Measures:             mse       
+[Resample] iter 1:    0.2500000 
+[Resample] iter 2:    0.3600000 
+[Resample] iter 3:    0.3600000 
+[Resample] iter 4:    0.3600000 
+[Resample] iter 5:    0.3600000 
+[Resample] iter 6:    0.2500000 
+[Resample] iter 7:    2.5600000 
+[Resample] iter 8:    0.3086420 
+[Resample] iter 9:    0.2500000 
+[Resample] iter 10:   2.8900000 
+
+
+Aggregated Result: mse.test.mean=0.7948642
+
+
+Komunikaty ostrzegawcze:
+1: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+2: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+3: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+4: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+5: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+6: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+7: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+8: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+9: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+10: W poleceniu 'randomForest.default(x = data[["data"]], y = data[["target"]], ':
+  The response has five or fewer unique values.  Are you sure you want to do regression?
+> 
+> ## Results for regr
+> 
+> regr.comparison
+                         task.id        learner.id mse.test.mean
+1 Smartphones ocena klientow MSE           regr.lm     2.3766188
+2 Smartphones ocena klientow MSE regr.randomForest     0.7365251
+3 Smartphones ocena klientow MSE         regr.nnet     0.8549173
+4 Smartphones ocena klientow MSE        regr.ctree     0.7948642
+5 Smartphones ocena klientow MSE        regr.rpart     0.7948642
+> 
+> getBMRAggrPerformances(regr.comparison)
+$`Smartphones ocena klientow MSE`
+$`Smartphones ocena klientow MSE`$regr.lm
+mse.test.mean 
+     2.376619 
+
+$`Smartphones ocena klientow MSE`$regr.randomForest
+mse.test.mean 
+    0.7365251 
+
+$`Smartphones ocena klientow MSE`$regr.nnet
+mse.test.mean 
+    0.8549173 
+
+$`Smartphones ocena klientow MSE`$regr.ctree
+mse.test.mean 
+    0.7948642 
+
+$`Smartphones ocena klientow MSE`$regr.rpart
+mse.test.mean 
+    0.7948642 
+
+
+> getBMRPerformances(regr.comparison)
+$`Smartphones ocena klientow MSE`
+$`Smartphones ocena klientow MSE`$regr.lm
+   iter         mse
+1     1  0.14271354
+2     2  0.03555613
+3     3 15.01075588
+4     4  0.53174885
+5     5  0.22868316
+6     6  0.82888792
+7     7  4.29457370
+8     8  0.03020775
+9     9  0.08569621
+10   10  2.57736479
+
+$`Smartphones ocena klientow MSE`$regr.randomForest
+   iter        mse
+1     1 0.04646420
+2     2 0.46460453
+3     3 0.32446586
+4     4 0.12225290
+5     5 0.15657095
+6     6 0.38785513
+7     7 3.85566886
+8     8 0.06833890
+9     9 0.04064832
+10   10 1.89838095
+
+$`Smartphones ocena klientow MSE`$regr.nnet
+   iter          mse
+1     1 2.499926e-01
+2     2 3.080914e-01
+3     3 3.599974e-01
+4     4 5.667344e-10
+5     5 1.023493e+00
+6     6 2.500003e-01
+7     7 2.276347e+00
+8     8 1.836741e-01
+9     9 1.007579e+00
+10   10 2.889999e+00
+
+$`Smartphones ocena klientow MSE`$regr.ctree
+   iter      mse
+1     1 0.250000
+2     2 0.360000
+3     3 0.360000
+4     4 0.360000
+5     5 0.360000
+6     6 0.250000
+7     7 2.560000
+8     8 0.308642
+9     9 0.250000
+10   10 2.890000
+
+$`Smartphones ocena klientow MSE`$regr.rpart
+   iter      mse
+1     1 0.250000
+2     2 0.360000
+3     3 0.360000
+4     4 0.360000
+5     5 0.360000
+6     6 0.250000
+7     7 2.560000
+8     8 0.308642
+9     9 0.250000
+10   10 2.890000
+
+
+> plotBMRBoxplots(regr.comparison)
